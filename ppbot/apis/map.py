@@ -9,7 +9,7 @@ class Map:
     """
     def __init__(self, question):
         """ Initialize the api_key, the url, and the question input to build the API"""
-        self.api_key = "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"
+        self.api_key = ""
         self.geocode_base_url = "https://maps.googleapis.com/maps/api/geocode/json"
         self.question = "".join(question)
 
