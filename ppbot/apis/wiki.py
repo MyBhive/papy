@@ -6,7 +6,7 @@ warnings.catch_warnings()
 warnings.simplefilter("ignore")
 
 
-class Wikipedia:
+class Wiki:
     """
     Class to find an wikipedia answer attached to the address found in the class Map
     """

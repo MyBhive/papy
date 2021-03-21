@@ -1,0 +1,46 @@
+﻿body{
+    height: 100;
+    background-color: rgb(215, 224, 216);
+}
+header {
+    background-color: rgb(215, 224, 216);
+    background-image: url("../img/band.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+h1, h2 {
+    color: black;
+    font-weight: bold;
+    text-shadow: 2px 2px rgb(125, 196, 20);
+}
+.chat{
+    max-height: 200px;
+    overflow: auto;
+}
+.media-body p{
+    text-align: left;
+    background: rgb(255,255,0);
+    border-radius: 20px 20px 20px 2px;
+    max-width: 300px;
+    color: green;
+    font-weight: bold;
+    margin: 13px 1px;
+    padding: 13px;
+}
+.p-1{
+  font-weight: bold;
+  font-size: 20px;
+}
+.p-2{
+  font-weight: bold;
+  font-size: 15px;
+}
+footer{
+  background-color: rgb(215, 224, 216);
+}
+#div-section{
+  background-color: rgb(215, 224, 216);
+}
+#div-chat{
+  background-color: rgb(255,255,255);
+}

@@ -9,23 +9,18 @@ class Parser:
     def answer_parser(self, user_input):
         with open(self.stopwords, encoding="utf-8-sig") as json_words:
             words_dict = json.load(json_words)
-
-        recup_answer = re.sub(r'[^\'*\w\s]', "", user_input)
+        recup_answer = re.sub(r'[^\w\s]', " ", user_input)
         make_lower = recup_answer.lower()
         sentence_list = make_lower.split()
         sentence_list = list(set(sentence_list))
-        print(sentence_list)
         i = 0
         while i < len(sentence_list):
             if sentence_list[i] in words_dict:
                 sentence_list[i] = ""
             i += 1
         final_output = " ".join(sentence_list)
-        return final_output
-
-
-bob = Parser("words.json")
-bob.answer_parser("j'aime le jambon et SURTOUT LES olive OLIVES vertes bien vertes!!!!!!")
+        sentence = final_output.strip()
+        return sentence
 
 # je récupère les infos du fichier 'words.json'
 # je supprime les caractères spéciaux inutiles
@@ -34,4 +29,3 @@ bob.answer_parser("j'aime le jambon et SURTOUT LES olive OLIVES vertes bien vert
 # je supprime les doublons
 # si l'élément correspond à un mot interdit alors je le supprime
 # je met ma liste modifiée en format string avec des espaces entre les éléments
-
