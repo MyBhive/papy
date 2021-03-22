@@ -8,15 +8,17 @@ header {
     background-size: cover;
     background-repeat: no-repeat;
 }
+/* title header */
 h1, h2 {
     color: black;
     font-weight: bold;
     text-shadow: 2px 2px rgb(125, 196, 20);
 }
 .chat{
-    max-height: 200px;
+    max-height: 400x;
     overflow: auto;
 }
+/* conversation */
 .media-body p{
     text-align: left;
     background: rgb(255,255,0);
@@ -27,20 +29,29 @@ h1, h2 {
     margin: 13px 1px;
     padding: 13px;
 }
+/* Delphine Miel */
 .p-1{
   font-weight: bold;
   font-size: 20px;
+  position:sticky;
 }
+/* 'Retrouve moi....' */
 .p-2{
   font-weight: bold;
   font-size: 15px;
-}
-footer{
-  background-color: rgb(215, 224, 216);
 }
 #div-section{
   background-color: rgb(215, 224, 216);
 }
 #div-chat{
-  background-color: rgb(255,255,255);
+  background-color: rgb(247,250,248);
+}
+.footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: rgb(112, 90, 57);
+      color: white;
+      text-align: center;
 }

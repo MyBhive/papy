@@ -19,13 +19,13 @@ class Map:
         with open(self.api_key, "r") as file:
             get_key = yaml.load(file, Loader=yaml.FullLoader)
             for name, value in get_key.items():
-                return name, value
+                return value
 
     def geocode(self):
         """ Method to find the lattitude and longitude of a place answering to the user's question criteria"""
         get_key = self.yaml_loader()
         param = {"address": self.question,
-                 "key": get_key}
+                 "key": "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"}
         response = requests.get(self.geocode_base_url, params=param)
         answer_json = response.json()
         search_geocode = answer_json['results'][0]['geometry']['location']
