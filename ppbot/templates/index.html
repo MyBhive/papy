@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../static/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../static/style.css" media="all"/>
 
     <title>GrandPy</title>
 </head>
@@ -21,45 +21,39 @@
             <h2>Dis moi papy!?</h2>
         </div>
     </header>
-    <div id="section" class="container p-30">
-        <div class="chat media border p-3">
-            <img src="img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 40px;">
-        <div class="media-body p-4">
-            <p>Salut mon petiot.</p>
-            <div class="media p-4">
-                <img src="img/quest.png" alt="User" class="mr-3 mt-3 rounded-circle" style="width: 45px;">
-            </div>
-        </div>
-        <div id="spin" class="spinner-border"></div>
-        </div>
 
-        <div  class="d-flex">
-            <form id="user_text_form" class="form-group">
-                <p>
-                    <label for="userText"></label>
-                    <input name="userText" id="userText" class="form-control"
-                        type="text" placeholder="Je t'écoute, quel endroit désires-tu connaître?">
-                    <button type="submit" class="btn btn-secondary">Valider</button>
-                </p>
+    <section class="container p-30">
+        <div id="chat_box" class="media border p-3">
+            <p class="col-md-5 offset-md-7col-lg-4" ><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 30px;">Salut mon petiot </p>
+            <div class="spinner-border"></div>
+        </div>
+        <div class="d-flex">
+            <form  id="user_text_form" class="col-lg-10">
+                <label for="user_text_form"></label>
+                <input name="userText" class="col-lg-10"
+                    type="text" placeholder="Je t'écoute, quel endroit désires-tu connaître?">
+                <button type="submit" class="btn btn-secondary">Valider</button>
             </form>
         </div>
-    </div>
-    <div class="footer">
-        <div class="row">
+    </section>
+    <footer>
+        <div class="row d-flex p-1">
             <div id="createby" class="p-1">Delphine Miel</div>
         </div>
-        <div class="row">
-            <div id="follow_the_link" class="p-2">Retrouve-moi en cliquant sur mes liens</div>
-            <div id="click_link" class="p-2">
-                <a class="p-2" href="https://github.com/MyBhive/papy">
-                    <img src="../img/github_PNG83.png" height="40" width="45">
+        <div class="row d-flex p-1">
+            <div id="follow_the_link1" class="p-1">Retrouve-moi en cliquant sur mes liens</div>
+            <div id="click_link1" class="p-1">
+                <a class="p-2" target="_blank" href="https://github.com/MyBhive/papy">
+                    <img src="../static/img/github_PNG83.png" height="30" width="45">
                 </a>
-                <a href="https://www.linkedin.com/in/delphine-miel-8438771b5/">
-                    <img src="../img/band.png" height="40" width="100">
+            </div>
+            <div id="click_link2" class="p-2">
+                <a target="_blank" href="https://www.linkedin.com/in/delphine-miel-8438771b5/">
+                    <img src="../static/img/linkedin.png" height="30" width="100">
                 </a>
             </div>
         </div>
-    </div>
+    </footer>
 </body>
 <script type="text/javascript" src="../static/script.js"></script>
 </html>

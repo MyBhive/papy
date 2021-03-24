@@ -1,4 +1,4 @@
-﻿from ppbot.parser import Parser
+﻿from ppbot.parse import Parser
 
 parse = Parser("ppbot/words.json")
 

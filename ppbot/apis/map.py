@@ -25,7 +25,7 @@ class Map:
         """ Method to find the lattitude and longitude of a place answering to the user's question criteria"""
         get_key = self.yaml_loader()
         param = {"address": self.question,
-                 "key": "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"}
+                 "key": get_key}
         response = requests.get(self.geocode_base_url, params=param)
         answer_json = response.json()
         search_geocode = answer_json['results'][0]['geometry']['location']
@@ -44,11 +44,3 @@ class Map:
         if answer_json['status'] in ['OK', 'ZERO_RESULTS']:
             return search_geocode
         raise Exception(answer_json['error_message'])
-
-
-
-bob = Map("paris")
-pop = bob.geocode()
-lol = bob.get_address_from_geocode()
-print(pop)
-print(lol)

@@ -4,8 +4,9 @@ form.addEventListener("submit", function (event) {
     event.preventDefault();
     console.log("vous avez appuyé sur valider");
 // Envoyer le contenu du formulaire au serveur pour qu'il soit exploité
-    fetch("/ajax", {
+    fetch("/result", {
         method: "POST",
         body: new FormData(form)
     })
+
 })

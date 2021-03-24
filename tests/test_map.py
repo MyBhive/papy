@@ -1,4 +1,8 @@
-﻿def test_geocoding_result_from_def_geocode_mock(monkeypatch):
+﻿from ppbot.apis.map import Map
+
+gmap = Map("tour Eiffel")
+
+def test_geocoding_result_from_def_geocode_mock(monkeypatch):
     result = {'lat': 48.9244592, 'lng': 2.3601645}
 
     def mock_urlopen():
