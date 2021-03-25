@@ -1,27 +1,20 @@
 ﻿from ppbot.apis.map import Map
+import urllib.request
 
-gmap = Map("tour Eiffel")
 
 def test_geocoding_result_from_def_geocode_mock(monkeypatch):
-    result = {'lat': 48.9244592, 'lng': 2.3601645}
-
-    def mock_urlopen():
-        return result
-
-    monkeypatch.setattr(
-        "ppbot.apis.map.Map.geocode", mock_urlopen())
-    assert result == {'lat': 48.9244592, 'lng': 2.3601645}
+    result = {'lat': 44.0774541, 'lng': 3.0228388}
+    gmap = Map("millau viaduc")
+    monkeypatch.setattr(urllib.request, 'urlopen', result)
+    assert gmap.geocode() == result
 
 
 def test_address_result_from_def_get_address_from_geocode_mock(monkeypatch):
-    result = "33 Boulevard Tonnelé France Tours 37000"
+    result = "Jardin botanique de Tours, 33 Boulevard Tonnellé, 37000 Tours, France"
+    gmap = Map("Jardin Botanique Tours")
+    monkeypatch.setattr(urllib.request, 'urlopen', result)
+    assert gmap.get_address_from_geocode() == result
 
-    def mock_url():
-        return result
-
-    monkeypatch.setattr(
-        "ppbot.apis.map.Map.get_address_from_geocode", mock_url())
-    assert result == "33 Boulevard Tonnelé France Tours 37000"
 
 
 

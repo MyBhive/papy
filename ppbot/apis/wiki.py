@@ -10,17 +10,24 @@ class Wiki:
     """
     Class to find an wikipedia answer attached to the address found in the class Map
     """
-    def __init__(self, address_found):
+    def __init__(self, text_parsed):
         """ Initialize the french language for the wikipedia researches and the address coming from the class Map """
         wikipedia.set_lang("fr")
-        self.address_found = address_found
+        self.text_parsed = text_parsed
+        self.unfind = ("Ohh un papillon!? "
+                       "Tu sais quand j'étais petit les champs étaient remplis de papillon!? "
+                       "Il était aussi joli que celui-là. "
+                       "Tu viens on va manger une pomme. "
+                       "Ah oui pardon tu disais? "
+                       "Car je crois ne pas avoir de réponse à ce sujet. "
+                       "Reposes moi une autre question mais soit plus précis s'il te plait.")
 
     def get_wiki_result(self):
         """ Method to search a result on wikipedia and make an output of the 3 first sentences if they are existing"""
         try:
-            find_result = wikipedia.search(self.address_found)
+            find_result = wikipedia.search(self.text_parsed)
             if not find_result:
-                return "Désolé mon petit, je sais où s'est mais je ne connais pas son histoire"
+                return "C'est rigolo ce que tu demandes! Tu sais que je suis un peu gâteux. Oh regarde ce belle endroit"
             else:
                 wik_page_name = find_result[0]
                 description = wikipedia.summary(wik_page_name, sentences=3)
@@ -30,14 +37,6 @@ class Wiki:
                           .format(description, connect_link))
                 return resume
         except exceptions.DisambiguationError:
-            unfind = ("Ohh un papillon!? "
-                      "Tu sais quand j'étais petit les champs étaient remplis de papillon!? "
-                      "Il était aussi joli que celui-là. "
-                      "Tu viens on va manger une pomme. "
-                      "Ah oui pardon tu disais? "
-                      "Car je crois ne pas avoir de réponse à ce sujet. "
-                      "Reposes moi une autre question mais soit plus précis s'il te plait.")
-            return unfind
-
-
-
+            return self.unfind
+        except wikipedia.exceptions.WikipediaException:
+            return self.unfind
