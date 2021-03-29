@@ -1,4 +1,5 @@
 ﻿import requests
+from ppbot import config
 
 
 class Map:
@@ -13,11 +14,12 @@ class Map:
         self.question = "".join(question)
         self.alternative_ad = "Articules quand tu parles je ne comprends rien! Dis moi quel endroit tu veux connaître?"
         self.alternative_geo = "Hein?!!! Qu'est ce aue tu dis??"
+        self.geo_key = config.GEO_KEY
 
     def geocode(self):
         """ Method to find the lattitude and longitude of a place answering to the user's question criteria"""
         param = {"address": self.question,
-                 "key": "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"}
+                 "key": self.geo_key}
         response = requests.get(self.geocode_base_url, params=param)
         answer_json = response.json()
         try:
@@ -30,7 +32,7 @@ class Map:
     def get_address_from_geocode(self):
         """ Method to find the exact address after getting the geocode"""
         param = {"address": self.question,
-                 "key": "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"}
+                 "key": self.geo_key}
         response = requests.get(self.geocode_base_url, params=param)
         answer_json = response.json()
         try:

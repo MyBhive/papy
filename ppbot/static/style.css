@@ -62,3 +62,7 @@ input {
   vertical-align: middle;
   height: 105%;
 }
+
+#map {
+  height: 100%;
+}

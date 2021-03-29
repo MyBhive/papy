@@ -24,15 +24,19 @@
 
     <section class="container p-30">
         <div id="chat_box" class="media border p-3">
-            <p class="col-md-5 offset-md-7col-lg-4" ><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 30px;">Salut mon petiot </p>
-            <div class="spinner-border"></div>
+            <p class="col-md-5 offset-md-7col-lg-4" >
+                <img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 30px;">Salut mon petiot </p>
+            <div id="map"></div>
         </div>
         <div class="d-flex">
-            <form  id="user_text_form" class="col-lg-10">
+            <form  id="user_text_form" class="col-lg-10" method="post">
                 <label for="user_text_form"></label>
-                <input name="userText" class="col-lg-10"
+                <input name="userText" class="col-lg-10" id="user_input"
                     type="text" placeholder="Je t'écoute, quel endroit désires-tu connaître?">
-                <button type="submit" class="btn btn-secondary">Valider</button>
+                <button type="submit" class="btn btn-secondary">Valider
+                <span id="spinner" class="spinner-border"></span>
+                </button>
+
             </form>
         </div>
     </section>

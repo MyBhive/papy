@@ -9,7 +9,7 @@ class Parser:
     def answer_parser(self, user_input):
         with open(self.stopwords, encoding="utf-8-sig") as json_words:
             words_dict = json.load(json_words)
-        recup_answer = re.sub(r'[^\w\s]', " ", user_input)
+        recup_answer = re.sub(r'[^\w\s]', " ", str(user_input))
         make_lower = recup_answer.lower()
         sentence_list = make_lower.split()
         sentence_list = list(set(sentence_list))
