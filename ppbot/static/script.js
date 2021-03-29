@@ -14,12 +14,14 @@ form.addEventListener("submit", function (event) {
         method: 'POST',
         body: new FormData(form)
     })
-    .then(response => console.log(response.json())
+    .then(function(response){
+        return response.json()
+    })
     .then(function(data){
         console.log(data)
         let result = document.getElementById('chat_box')
         result.innerHTML = `<p class="col-md-5 offset-md-7col-lg-4">
         <img src="../static/img/quest.png" alt="question" class="mr-3 mt-3 rounded-circle" style="width: 30px;">
         ${data.body} </p> `
-    }))
+    })
 })
