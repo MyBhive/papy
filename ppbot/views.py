@@ -17,7 +17,7 @@ def index():
 def get_data():
     # get and parse the data
     parsing = parse.Parser("ppbot/words.json")
-    user_text = request.form.get("user_text_form", False)
+    user_text = request.form.get("user_text_form")
     parse_text = parsing.answer_parser(user_text)
 
     # get the gps coord and the address
@@ -29,6 +29,6 @@ def get_data():
     wiki_extract = wiki.Wiki(address)
     wiki_data = wiki_extract.get_wiki_result()
 
-    response = [wiki_data, gps_coordinate, address]
+    response = {"wiki_quote": wiki_data, "geolo": gps_coordinate, "address": address}
     print(response)
     return jsonify(response)
