@@ -32,6 +32,6 @@ def get_data():
     wiki_extract = wiki.Wiki(address)
     wiki_data = wiki_extract.get_wiki_result()
 
-    response = [wiki_data, gps_coordinate, address]
+    response = {"wiki": wiki_data, "coordinate": gps_coordinate, "address": address}
     print(response)
     return jsonify(response)
