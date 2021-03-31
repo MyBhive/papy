@@ -1,5 +1,4 @@
 ﻿import requests
-from ppbot import config
 
 
 class Map:
@@ -13,8 +12,8 @@ class Map:
         self.geocode_base_url = "https://maps.googleapis.com/maps/api/geocode/json"
         self.question = "".join(question)
         self.alternative_ad = "Articules quand tu parles je ne comprends rien! Dis moi quel endroit tu veux connaître?"
-        self.alternative_geo = "Hein?!!! Qu'est ce aue tu dis??"
-        self.geo_key = config.GEO_KEY
+        self.alternative_geo = "Hein?!!! Qu'est ce que tu dis??"
+        self.geo_key = "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"
 
     def geocode(self):
         """ Method to find the lattitude and longitude of a place answering to the user's question criteria"""

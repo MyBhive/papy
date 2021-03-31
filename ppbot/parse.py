@@ -19,6 +19,7 @@ class Parser:
                 sentence_list[i] = ""
             i += 1
         final_output = " ".join(sentence_list)
+        final_output = re.sub(" +", " ", final_output)
         sentence = final_output.strip()
         return sentence
 
