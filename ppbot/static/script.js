@@ -20,7 +20,7 @@ function request_ajax(url ,data, headers) {
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    spinner.style.visibility="visible";
+    spinner.style.visibility="hidden";
     let user_input = document.querySelector("#user_input").value
     request_ajax("/search", user_input, {
         "Content-Type": "application/json"
@@ -28,13 +28,13 @@ form.addEventListener("submit", function (event) {
     .then(response => {
         console.log(response);
         show_user();
+        spinner.style.visibility="visible";
         show_answer(response["wiki"]);
         initMap(response["coordinate"], response["address"], map_key); 
+        spinner.style.visibility="hidden";
     })
-    spinner.style.visibility="hidden";
+    
 })
-
-
 
 
 function initMap(location, address, key){
@@ -43,12 +43,13 @@ function initMap(location, address, key){
     location: localité
     address: adresse à marquer
     key: api clef
-    */
+    */ 
+    let chat = document.createElement("div");
+    chat.setAttribute("id", "map");
     let script = document.createElement("script");
     script.src = json_map + "key=" + key + "&callback=initmaps";
     script.defer = true;
-    let chat = document.getElementById("bot");
-    chat.innerHTML = `<div id="map" style="height: 400px;"></div>`;
+    chat.appendChild(script);
     console.log(location)
     window.initmaps = function() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -64,10 +65,9 @@ function initMap(location, address, key){
         title: address,
     });
     } 
-    document.getElementById("map").appendChild(script);
+    document.getElementById("bot").appendChild(chat);
+
 }
-
-
 
 
 // Fonction pour HTML

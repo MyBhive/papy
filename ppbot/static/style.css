@@ -70,7 +70,6 @@ input {
 
 }
 #map {
-  height: 100%;
   width: 80%;
-  display: inline-block;
+  height: 400px;
 }
