@@ -72,5 +72,5 @@ input {
 #map {
   height: 100%;
   width: 80%;
-  display: block;
+  display: inline-block;
 }
