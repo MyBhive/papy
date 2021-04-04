@@ -3,7 +3,7 @@ let json_map = "https://maps.googleapis.com/maps/api/js?";
 let spinner = document.getElementById("spinner");
 let user_question = document.querySelector("#user_input");
 let map_key = "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM";
-
+let map_index = 0;
 
 
 // quand j'appuie sur le bouton je ne recharge pas la page
@@ -20,7 +20,7 @@ function request_ajax(url ,data, headers) {
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    spinner.style.visibility="hidden";
+    spinner.style.display="inline-block";
     let user_input = document.querySelector("#user_input").value
     request_ajax("/search", user_input, {
         "Content-Type": "application/json"
@@ -28,46 +28,36 @@ form.addEventListener("submit", function (event) {
     .then(response => {
         console.log(response);
         show_user();
-        spinner.style.visibility="visible";
         show_answer(response["wiki"]);
-        initMap(response["coordinate"], response["address"], map_key); 
-        spinner.style.visibility="hidden";
+        initMap(response["coordinate"], response["address"]); 
     })
-    
+    spinner.style.display="none";
 })
 
 
-function initMap(location, address, key){
-    /*
-    Je crée la carte googlemap
-    location: localité
-    address: adresse à marquer
-    key: api clef
-    */ 
-    let chat = document.createElement("div");
-    chat.setAttribute("id", "map");
-    let script = document.createElement("script");
-    script.src = json_map + "key=" + key + "&callback=initmaps";
-    script.defer = true;
-    chat.appendChild(script);
-    console.log(location)
-    window.initmaps = function() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: location,
-        zoom: 15,
-        mapTypeId: 'satellite',
-        mapTypeControl: true, 
-        scrollwheel: false
-    });
-    new google.maps.Marker({ 
-        position: location,
-        map: map,
-        title: address,
-    });
-    } 
-    document.getElementById("bot").appendChild(chat);
+function initMap(location, address) {
 
-}
+    div_id = "map" + String(map_index);
+    let div_map = document.createElement("div");
+    div_map.id = div_id;
+    div_map.className = "map_css";
+    let chat_box = document.getElementById("bot");
+    chat_box.appendChild(div_map);
+        map = new google.maps.Map(document.getElementById(div_id), {
+            center: location,
+            zoom: 15,
+            mapTypeId: 'satellite',
+        });
+        marker = new google.maps.Marker({ 
+            position: location,
+            map: map,
+            title: address,
+        });
+        map_index++;
+    } 
+
+
+ 
 
 
 // Fonction pour HTML

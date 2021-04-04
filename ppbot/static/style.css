@@ -12,10 +12,12 @@ h1, h2 {
   font-weight: bold;
   text-shadow: 2px 2px rgb(183, 235, 106);
 }
-
+section {
+  margin-bottom: 10%;
+}
 #bot{
   width: 92%;
-  max-height: 440px;
+  max-height: 400px;
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -52,15 +54,18 @@ p img{
   color: black;
   font-size: 15px;
 }
-
+footer div{
+  max-width: 100%;
+}
 footer{
-  position: fixed;
+  margin-top: 50px;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: rgb(112, 90, 57);
   color: white;
-  text-align: center;
+  padding: 10px;
+
 }
 input {
   border-style: hidden;
@@ -69,7 +74,14 @@ input {
   background-color: rgb(232, 235, 232);
 
 }
-#map {
+.map_css {
+  overflow: auto;
   width: 80%;
   height: 400px;
 }
+
+#spinner {
+  display: none;
+}
+
+
