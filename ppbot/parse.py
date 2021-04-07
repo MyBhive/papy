@@ -3,16 +3,29 @@ import re
 
 
 class Parser:
+    """
+    Class for parsing the user input before we can find an address and a wiki answer.
+    """
     def __init__(self, stopwords):
+        """
+        Initializing the "stopwords" list
+        """
         self.stopwords = stopwords
 
     def answer_parser(self, user_input):
+        """
+        Method to:
+        - open the "stop words" file
+        - From the user input : delete de useless character and make everything lower
+        - make a loop to check one by one the words (from user input)
+        if they are in the "stop words" list or not. If yes we delete them.
+        - delete the useless blank and return the parsed answer
+        """
         with open(self.stopwords, encoding="utf-8-sig") as json_words:
             words_dict = json.load(json_words)
         recup_answer = re.sub(r'[^\w\s]', " ", str(user_input))
         make_lower = recup_answer.lower()
         sentence_list = make_lower.split()
-        sentence_list = list(set(sentence_list))
         i = 0
         while i < len(sentence_list):
             if sentence_list[i] in words_dict:
@@ -23,10 +36,3 @@ class Parser:
         sentence = final_output.strip()
         return sentence
 
-# je récupère les infos du fichier 'words.json'
-# je supprime les caractères spéciaux inutiles
-# je mets tout en miniscule
-# je créé une liste à partir de la réponse mise en minuscule
-# je supprime les doublons
-# si l'élément correspond à un mot interdit alors je le supprime
-# je met ma liste modifiée en format string avec des espaces entre les éléments

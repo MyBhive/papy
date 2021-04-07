@@ -1,87 +1,126 @@
-﻿body{
+﻿body {
   background-color: rgb(215, 224, 216);
+  min-height: 100vh;
+  position: relative;
 }
-header{
+
+header {
   background-image: url("../static/img/band.png");
   background-size: cover;
   background-repeat: no-repeat;
+  max-height: 20vh;
 }
+
 /* title header */
 h1, h2 {
   color: black;
   font-weight: bold;
-  text-shadow: 2px 2px rgb(183, 235, 106);
+  text-shadow: 0.125em 0.125em rgb(183, 235, 106);
 }
-section {
-  margin-bottom: 10%;
-}
-#bot{
-  width: 92%;
-  max-height: 400px;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-}
-/* conversation */
-p {
-  text-align: left;
-  background: rgb(170, 221, 113);
-  border-radius: 20px 20px 20px 2px;
-  max-width: 600px;
-  color: green;
-  font-weight: bold;
-  margin: 10px 6px;
-  padding: 10px;
-  position: relative;
 
+section {
+  padding-top: 4em;
+  padding-bottom: 7em;
+  max-height: 50vh;
 }
-p img{
-  float: left;
-  max-width: 50px;
-  position: relative;
-  top: -7px;
+
+footer div {
+  max-width: 60%;
 }
-/* Delphine Miel */
-#createby{
-  margin-left: 3%;
-  font-weight: bold;
-  font-size: 20px;
-}
-/* 'Retrouve moi....' */
-#follow_the_link1{
-  margin-left: 3%;
-  font-weight: bold;
-  color: black;
-  font-size: 15px;
-}
-footer div{
-  max-width: 100%;
-}
-footer{
-  margin-top: 50px;
+
+footer {
+  margin-top: 3.125em;
+  height: 7em;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: rgb(112, 90, 57);
   color: white;
-  padding: 10px;
-
+  padding: 0.625em;
+  position: absolute;
 }
+
+#bot {
+  width: 92%;
+  max-height: 25em;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* conversation */
+#user_quest {
+  text-align: left;
+  background: green;
+  border-radius: 1.250em 1.250em 1.250em 0.125em;
+  max-width: 37.5em;
+  color: rgb(170, 221, 113);
+  font-weight: bold;
+  margin: 0.625em 0.375em;
+  padding: 0.625em;
+  position: relative;
+}
+
+p {
+  text-align: left;
+  background: rgb(170, 221, 113);
+  border-radius: 1.250em 1.250em 1.250em 0.125em;
+  max-width: 37.5em;
+  color: green;
+  font-weight: bold;
+  margin: 0.625em 0.375em;
+  padding: 0.625em;
+  position: relative;
+}
+
+p img {
+  float: left;
+  max-width: 3.125em;
+  position: relative;
+  top: -7px;
+}
+
+/* Delphine Miel */
+#createby {
+  margin-left: 0.188em;
+  font-weight: bold;
+  font-size: 1.250em;
+}
+
+/* 'Retrouve moi....' */
+#follow_the_link1 {
+  margin-left: 0.188em;
+  font-weight: bold;
+  color: black;
+  font-size: 0.938em;
+}
+
 input {
   border-style: hidden;
   vertical-align: middle;
-  height: 101%;
+  height: 100%;
+  max-height: 6vh;
   background-color: rgb(232, 235, 232);
-
 }
-.map_css {
-  overflow: auto;
-  width: 80%;
-  height: 400px;
+
+button {
+  max-height: 6vh;
 }
 
 #spinner {
   display: none;
 }
 
+.frame_css {
+  /*  */
+  height : 25em;
+  max-width: 37.5em;
+  width: 50em;
+}
 
+.map_css {
+  height : 100%;
+  width : 100%;
+  margin : auto;  
+  position: relative;
+}

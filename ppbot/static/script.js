@@ -6,7 +6,7 @@ let map_key = "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM";
 let map_index = 0;
 
 
-// quand j'appuie sur le bouton je ne recharge pas la page
+// function to make a ajax request
 function request_ajax(url ,data, headers) {
     return fetch(url, {
         method: "POST",
@@ -17,10 +17,11 @@ function request_ajax(url ,data, headers) {
     .catch(error => console.log(error));
 }
 
+// When the user click on the button or tape enter, the program starts
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-
-    spinner.style.display="inline-block";
+    spinner.style.display = "inline-block";
+    
     let user_input = document.querySelector("#user_input").value
     request_ajax("/search", user_input, {
         "Content-Type": "application/json"
@@ -31,44 +32,51 @@ form.addEventListener("submit", function (event) {
         show_answer(response["wiki"]);
         initMap(response["coordinate"], response["address"]); 
     })
-    spinner.style.display="none";
-})
+    spinner.style.display = "none";
+});
 
-
+// Function to initialize the google map
 function initMap(location, address) {
-
+// generate id for my 2 necessaries div
+    frame_id = "frame"+ String(map_index);
     div_id = "map" + String(map_index);
+// create the container div to receive the div where the map will be
+    let frame_map = document.createElement("div");
+    frame_map.id = frame_id;
+    frame_map.className = "frame_css";
+// create the div where the map will be
     let div_map = document.createElement("div");
     div_map.id = div_id;
     div_map.className = "map_css";
     let chat_box = document.getElementById("bot");
-    chat_box.appendChild(div_map);
-        map = new google.maps.Map(document.getElementById(div_id), {
+// include div in each other
+    chat_box.appendChild(frame_map);
+    frame_map.appendChild(div_map);
+// create the map
+        map = new google.maps.Map(div_map, {
             center: location,
-            zoom: 15,
-            mapTypeId: 'satellite',
+            zoom: 17,
+            mapTypeId: 'satellite'
         });
         marker = new google.maps.Marker({ 
             position: location,
             map: map,
-            title: address,
+            title: address
         });
-        map_index++;
-    } 
+// add +1 to the index that for reload the id of each div can change 
+    map_index++;
+}
 
-
- 
-
-
-// Fonction pour HTML
+// Function to show the user input in a chat bubble in HTML
 function show_user() {
     let insert_input_user = document.createElement("div");
-    insert_input_user.innerHTML = `<p><img src="../static/img/quest.png" alt="Question" class="mr-3 mt-3 rounded-circle" style="width: 30px;">${user_input.value}</p>`;
+    insert_input_user.innerHTML = `<p id="user_quest"><img src="../static/img/quest.png" alt="Question" class="mr-3 mt-2 rounded-circle" style="width: 30px;">${user_input.value}</p>`;
     document.getElementById("bot").appendChild(insert_input_user);
     user_input.value = "";
     console.log("ok ça s'affiche")
 }
 
+// Function to show the wiki answer in a chat bubble in HTML
 function show_answer(wiki_quote) {
     let insert_input_user = document.createElement("div");
     insert_input_user.innerHTML = `<p><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 30px;">${wiki_quote}</p>`;

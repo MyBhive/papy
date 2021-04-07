@@ -8,17 +8,24 @@ class Map:
      - find an address after getting the geocode
     """
     def __init__(self, question):
-        """ Initialize the api_key, the url, and the question input to build the API"""
+        """
+        Initialize the api_key, the url, and the question input to build the API
+        """
         self.geocode_base_url = "https://maps.googleapis.com/maps/api/geocode/json"
         self.question = "".join(question)
-        self.alternative_ad = "Articules quand tu parles je ne comprends rien! Dis moi quel endroit tu veux connaître?"
-        self.alternative_geo = "Hein?!!! Qu'est ce que tu dis??"
         self.geo_key = "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"
 
+        self.alternative_ad = "Lotus Temple Rd, Bahapur, Shambhu Dayal Bagh, Kalkaji, New Delhi, Delhi 110019, Inde"
+        self.alternative_geo = {'lat': 28.553746427467193, 'lng': 77.2588800416219}
+
     def geocode(self):
-        """ Method to find the lattitude and longitude of a place answering to the user's question criteria"""
+        """
+        Method to find the latitude and longitude
+        of a place answering to the user's question parsed
+        """
         param = {"address": self.question,
-                 "key": self.geo_key}
+                 "key": self.geo_key
+                 }
         response = requests.get(self.geocode_base_url, params=param)
         answer_json = response.json()
         try:
@@ -29,9 +36,12 @@ class Map:
             return self.alternative_geo
 
     def get_address_from_geocode(self):
-        """ Method to find the exact address after getting the geocode"""
+        """
+        Method to find the exact address after getting the geocode
+        """
         param = {"address": self.question,
-                 "key": self.geo_key}
+                 "key": self.geo_key
+                 }
         response = requests.get(self.geocode_base_url, params=param)
         answer_json = response.json()
         try:
