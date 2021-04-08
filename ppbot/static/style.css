@@ -4,6 +4,7 @@
   position: relative;
 }
 
+/*-------- HEADER --------- */
 header {
   background-image: url("../static/img/band.png");
   background-size: cover;
@@ -18,26 +19,14 @@ h1, h2 {
   text-shadow: 0.125em 0.125em rgb(183, 235, 106);
 }
 
+
+ /* ------- SECTION BODY --------- */
 section {
+  overflow: auto;
+  max-height: fit-content;
+  max-height: 62vh;
   padding-top: 4em;
-  padding-bottom: 7em;
-  max-height: 50vh;
-}
-
-footer div {
-  max-width: 60%;
-}
-
-footer {
-  margin-top: 3.125em;
-  height: 7em;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: rgb(112, 90, 57);
-  color: white;
-  padding: 0.625em;
-  position: absolute;
+  padding-bottom: 4em;
 }
 
 #bot {
@@ -50,15 +39,8 @@ footer {
 
 /* conversation */
 #user_quest {
-  text-align: left;
   background: green;
-  border-radius: 1.250em 1.250em 1.250em 0.125em;
-  max-width: 37.5em;
   color: rgb(170, 221, 113);
-  font-weight: bold;
-  margin: 0.625em 0.375em;
-  padding: 0.625em;
-  position: relative;
 }
 
 p {
@@ -70,7 +52,9 @@ p {
   font-weight: bold;
   margin: 0.625em 0.375em;
   padding: 0.625em;
+  width: fit-content;
   position: relative;
+  padding-left: 15px;
 }
 
 p img {
@@ -78,6 +62,47 @@ p img {
   max-width: 3.125em;
   position: relative;
   top: -7px;
+}
+
+input {
+  border-style: hidden;
+  vertical-align: middle;
+  height: 100%;
+  max-height: 8vh;
+  background-color: rgb(232, 235, 232);
+}
+
+#spinner {
+  display: none;
+}
+
+.frame_css {
+  height : 25em;
+  max-width: 37.5em;
+  width: 50em;
+}
+
+.map_css {
+  height : 100%;
+  width : 100%;
+  margin : auto;  
+  position: relative;
+}
+
+/* -------- FOOTER -------- */
+footer div {
+  max-width: 100%;
+}
+
+footer {
+  margin-top: 3.125em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(112, 90, 57);
+  color: white;
+  padding: 0.625em;
+  position: absolute;
 }
 
 /* Delphine Miel */
@@ -95,32 +120,9 @@ p img {
   font-size: 0.938em;
 }
 
-input {
-  border-style: hidden;
-  vertical-align: middle;
-  height: 100%;
-  max-height: 6vh;
-  background-color: rgb(232, 235, 232);
-}
-
-button {
-  max-height: 6vh;
-}
-
-#spinner {
-  display: none;
-}
-
-.frame_css {
-  /*  */
-  height : 25em;
-  max-width: 37.5em;
-  width: 50em;
-}
-
-.map_css {
-  height : 100%;
-  width : 100%;
-  margin : auto;  
-  position: relative;
-}
+@media screen and (max-height: 642px){
+    h1, h2{
+      font-size: 1.5em;
+    }
+    
+  } 

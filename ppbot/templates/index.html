@@ -6,9 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"/>    
     <link rel="stylesheet" type="text/css" href="../static/style.css" media="all"/>
 
     <title>GrandPy</title>
@@ -30,8 +29,8 @@
                 <form  id="user_text_form" class="col-md-10" method="post">
                     <label for="user_text_form"></label>
                     <input name="userText" class="col-md-10" id="user_input"
-                        type="text" placeholder="Je t'écoute, quel endroit désires-tu connaître?">
-                    <button type="submit" id="button" class="btn btn-secondary" style="width:100px">Valider<span id="spinner" class="spinner-border"></span></button>
+                        type="text" placeholder="Quel endroit désires-tu connaître?" required>
+                    <button type="submit" id="button" class="btn btn-secondary" style="width:130px">Valider <span class="spinner-border" role="status" id="spinner"></span></button>
                 </form>
             </div>
         </div>
@@ -41,20 +40,20 @@
             <div id="createby" class="p-1 col-lg-10">Delphine Miel</div>
         </div>
         <div class="row p-1">
-            <div id="follow_the_link1" class="p-1">Retrouve-moi en cliquant sur mes liens</div>
-            <div id="click_link1" class="p-1">
-                <a class="p-2" target="_blank" href="https://github.com/MyBhive/papy">
+            <div id="follow_the_link1" class="p-1">Retrouve-moi en cliquant sur mes liens
+                <span><a class="p-2" target="_blank" href="https://github.com/MyBhive/papy">
                     <img src="../static/img/github_PNG83.png" height="30" width="45">
-                </a>
-            </div>
-            <div id="click_link2" class="p-2">
-                <a target="_blank" href="https://www.linkedin.com/in/delphine-miel-8438771b5/">
+                </a></span>
+                <span> <a target="_blank" href="https://www.linkedin.com/in/delphine-miel-8438771b5/">
                     <img src="../static/img/linkedin.png" height="30" width="100">
-                </a>
+                </a></span>
             </div>
-        </div>
     </footer>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"></script>
+    </body>
 <script type="text/javascript" src="../static/script.js"></script>
 <script async defer id="mappy" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"></script>
 </html>

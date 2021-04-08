@@ -6,7 +6,7 @@ let map_key = "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM";
 let map_index = 0;
 
 
-// function to make a ajax request
+// function to make a ajax request-------------------
 function request_ajax(url ,data, headers) {
     return fetch(url, {
         method: "POST",
@@ -17,13 +17,34 @@ function request_ajax(url ,data, headers) {
     .catch(error => console.log(error));
 }
 
-// When the user click on the button or tape enter, the program starts
+// function to make input restriction-------------------
+function valid_input(analize_input) {
+    if (analize_input.trim(" ", "") === "")
+    return 1;
+    if (analize_input.length >= 100)
+    return 2;
+    if (a)
+    return 0;
+}
+
+// When the user click on the button or click enter, the program starts
 form.addEventListener("submit", function (event) {
     event.preventDefault();
     spinner.style.display = "inline-block";
     
     let user_input = document.querySelector("#user_input").value
-    request_ajax("/search", user_input, {
+    if (valid_input(user_input) == 1) {
+        wrong_answer_reaction();
+        console.log("c'est pouet");
+        spinner.style.display = "none";
+    }
+    if (valid_input(user_input) == 2){
+        wrong_answer_reaction();
+        console.log("c'est 2");
+        spinner.style.display = "none";
+    }
+    if (valid_input(user_input) == 0) {
+        request_ajax("/search", user_input, {
         "Content-Type": "application/json"
     })
     .then(response => {
@@ -31,11 +52,13 @@ form.addEventListener("submit", function (event) {
         show_user();
         show_answer(response["wiki"]);
         initMap(response["coordinate"], response["address"]); 
+        spinner.style.display = "none";
     })
-    spinner.style.display = "none";
+    return 0;
+    }
 });
 
-// Function to initialize the google map
+// Function to initialize the google map----------------------
 function initMap(location, address) {
 // generate id for my 2 necessaries div
     frame_id = "frame"+ String(map_index);
@@ -67,7 +90,7 @@ function initMap(location, address) {
     map_index++;
 }
 
-// Function to show the user input in a chat bubble in HTML
+// Function to show the user input in a chat bubble in HTML---------------------------
 function show_user() {
     let insert_input_user = document.createElement("div");
     insert_input_user.innerHTML = `<p id="user_quest"><img src="../static/img/quest.png" alt="Question" class="mr-3 mt-2 rounded-circle" style="width: 30px;">${user_input.value}</p>`;
@@ -76,11 +99,19 @@ function show_user() {
     console.log("ok ça s'affiche")
 }
 
-// Function to show the wiki answer in a chat bubble in HTML
+// Function to show the wiki answer in a chat bubble in HTML-----------------
 function show_answer(wiki_quote) {
-    let insert_input_user = document.createElement("div");
-    insert_input_user.innerHTML = `<p><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 30px;">${wiki_quote}</p>`;
-    document.getElementById("bot").appendChild(insert_input_user);
+    let insert_wiki = document.createElement("div");
+    insert_wiki.innerHTML = `<p><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 30px;">${wiki_quote}</p>`;
+    document.getElementById("bot").appendChild(insert_wiki);
+    user_input.value = "";
+    console.log("ok ça s'affiche")
+}
+
+function wrong_answer_reaction() {
+    let wrong = document.createElement("div");
+    wrong.innerHTML = `<p><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-2 rounded-circle" style="width: 30px;">Parle plus fort et articule basard!</p>`;
+    document.getElementById("bot").appendChild(wrong);
     user_input.value = "";
     console.log("ok ça s'affiche")
 }
