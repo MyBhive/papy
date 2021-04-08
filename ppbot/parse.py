@@ -16,7 +16,7 @@ class Parser:
         """
         Method to:
         - open the "stop words" file
-        - From the user input : delete de useless character and make everything lower
+        - From the user input : delete the useless character and make everything lower
         - make a loop to check one by one the words (from user input)
         if they are in the "stop words" list or not. If yes we delete them.
         - delete the useless blank and return the parsed answer

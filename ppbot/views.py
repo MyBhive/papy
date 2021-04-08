@@ -21,7 +21,7 @@ def get_data():
     - get and parse the data
     - get the gps coord and the address
     - get the wiki quote through the parse_text
-    - return the response un json to send it to the front
+    - return the response in json to send it to the front
     """
     # get and parse the data
     parsing = parse.Parser("ppbot/words.json")
