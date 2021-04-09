@@ -3,6 +3,7 @@ from flask import render_template, request, jsonify
 from ppbot import parse
 from ppbot.apis import map
 from ppbot.apis import wiki
+from env import key_maps
 
 from . import app
 
@@ -38,6 +39,6 @@ def get_data():
     wiki_extract = wiki.Wiki(parse_text, address)
     wiki_data = wiki_extract.get_wiki_result()
 
-    response = {"wiki": wiki_data, "coordinate": gps_coordinate, "address": address}
+    response = {"wiki": wiki_data, "coordinate": gps_coordinate, "address": address, "api_key": key_maps}
     print(response)
     return jsonify(response)

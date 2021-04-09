@@ -1,4 +1,5 @@
 ﻿import requests
+from env import key_maps
 
 
 class Map:
@@ -13,10 +14,13 @@ class Map:
         """
         self.geocode_base_url = "https://maps.googleapis.com/maps/api/geocode/json"
         self.question = "".join(question)
-        self.geo_key = "AIzaSyA6pDUb-mZVASzAclRmgzkCQolxA7wTEwM"
+        self.geo_key = key_maps
 
-        self.alternative_ad = "Lotus Temple Rd, Bahapur, Shambhu Dayal Bagh, Kalkaji, New Delhi, Delhi 110019, Inde"
-        self.alternative_geo = {'lat': 28.553746427467193, 'lng': 77.2588800416219}
+        self.alternative_ad = "Lotus Temple Rd, Bahapur, " \
+                              "Shambhu Dayal Bagh, Kalkaji, " \
+                              "New Delhi, Delhi 110019, Inde"
+        self.alternative_geo = {'lat': 28.553746427467193,
+                                'lng': 77.2588800416219}
 
     def geocode(self):
         """
