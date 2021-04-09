@@ -21,9 +21,9 @@ function request_ajax(url ,data, headers) {
 function valid_input(analize_input) {
     if (analize_input.trim(" ", "") === "")
     return 1;
-    if (analize_input.length >= 100)
+    if (analize_input.length >= 200)
     return 2;
-    if (a)
+    if (analize_input)
     return 0;
 }
 

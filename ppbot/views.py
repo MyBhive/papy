@@ -35,7 +35,7 @@ def get_data():
     address = gmap.get_address_from_geocode()
     print(address)
     # get the wiki quote through the parse_text
-    wiki_extract = wiki.Wiki(parse_text)
+    wiki_extract = wiki.Wiki(parse_text, address)
     wiki_data = wiki_extract.get_wiki_result()
 
     response = {"wiki": wiki_data, "coordinate": gps_coordinate, "address": address}
