@@ -1,5 +1,5 @@
 ﻿import requests
-from env import key_maps
+from usekey import key_maps
 
 
 class Map:

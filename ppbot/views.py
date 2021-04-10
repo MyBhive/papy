@@ -3,7 +3,7 @@ from flask import render_template, request, jsonify
 from ppbot import parse
 from ppbot.apis import map
 from ppbot.apis import wiki
-from env import key_maps
+from usekey import key_maps_JS
 
 from . import app
 
@@ -13,7 +13,7 @@ def index():
     """
     Through the framework flask, return the html file
     """
-    return render_template("index.html")
+    return render_template("index.html", key=key_maps_JS)
 
 
 @app.route("/search", methods=["POST"])
@@ -39,6 +39,6 @@ def get_data():
     wiki_extract = wiki.Wiki(parse_text, address)
     wiki_data = wiki_extract.get_wiki_result()
 
-    response = {"wiki": wiki_data, "coordinate": gps_coordinate, "address": address, "api_key": key_maps}
+    response = {"wiki": wiki_data, "coordinate": gps_coordinate, "address": address}
     print(response)
     return jsonify(response)
