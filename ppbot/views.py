@@ -3,7 +3,7 @@ from flask import render_template, request, jsonify
 from ppbot import parse
 from ppbot.apis import map
 from ppbot.apis import wiki
-from usekey import key_maps_JS
+from env import key_maps_JS
 
 from . import app
 
