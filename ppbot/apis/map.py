@@ -1,5 +1,5 @@
 ﻿import requests
-from env import key_maps
+import os
 
 
 class Map:
@@ -14,7 +14,7 @@ class Map:
         """
         self.geocode_base_url = "https://maps.googleapis.com/maps/api/geocode/json"
         self.question = "".join(question)
-        self.geo_key = key_maps
+        self.geo_key = os.environ.get('KEY_MAPS')
 
         self.alternative_ad = "Lotus Temple Rd, Bahapur, " \
                               "Shambhu Dayal Bagh, Kalkaji, " \

@@ -3,7 +3,7 @@ from flask import render_template, request, jsonify
 from ppbot import parse
 from ppbot.apis import map
 from ppbot.apis import wiki
-from env import key_maps_JS
+
 
 from . import app
 import os
@@ -15,7 +15,7 @@ def index():
     Through the framework flask, return the html file
     """
     print(os.environ.get('key_maps_JS'))
-    return render_template("index.html", key=key_maps_JS)
+    return render_template("index.html", key=os.environ.get('KEY_MAPS_JS'))
 
 
 @app.route("/search", methods=["POST"])
