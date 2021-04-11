@@ -14,7 +14,7 @@ def index():
     """
     Through the framework flask, return the html file
     """
-    print(os.environ.get(key_maps_JS))
+    print(os.environ.keys())
     return render_template("index.html", key=key_maps_JS)
 
 
