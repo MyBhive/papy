@@ -15,7 +15,7 @@ def index():
     Through the framework flask, return the html file
     """
     print(os.environ.get('key_maps_JS'))
-    return render_template("index.html", key=os.environ.get('KEY_MAPS_JS'))
+    return render_template("index.html", key=os.environ.get('key_maps_JS'))
 
 
 @app.route("/search", methods=["POST"])
