@@ -34,12 +34,10 @@ form.addEventListener("submit", function (event) {
     let user_input = document.querySelector("#user_input").value
     if (valid_input(user_input) == 1) {
         wrong_answer_reaction();
-        console.log("c'est pouet");
         spinner.style.display = "none";
     }
     if (valid_input(user_input) == 2){
         wrong_answer_reaction();
-        console.log("c'est 2");
         spinner.style.display = "none";
     }
     if (valid_input(user_input) == 0) {
@@ -95,7 +93,6 @@ function show_user() {
     insert_input_user.innerHTML = `<p id="user_quest"><img src="../static/img/quest.png" alt="Question" class="mr-3 mt-2 rounded-circle" style="width: 30px;">${user_input.value}</p>`;
     document.getElementById("bot").appendChild(insert_input_user);
     user_input.value = "";
-    console.log("ok ça s'affiche")
 }
 
 // Function to show the wiki answer in a chat bubble in HTML-----------------
@@ -104,7 +101,6 @@ function show_answer(wiki_quote) {
     insert_wiki.innerHTML = `<p><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-3 rounded-circle" style="width: 30px;">${wiki_quote}</p>`;
     document.getElementById("bot").appendChild(insert_wiki);
     user_input.value = "";
-    console.log("ok ça s'affiche")
 }
 
 function wrong_answer_reaction() {
@@ -112,5 +108,4 @@ function wrong_answer_reaction() {
     wrong.innerHTML = `<p><img src="../static/img/pap.png" alt="Papy" class="mr-3 mt-2 rounded-circle" style="width: 30px;">Parle plus fort et articule basard!</p>`;
     document.getElementById("bot").appendChild(wrong);
     user_input.value = "";
-    console.log("ok ça s'affiche")
 }
