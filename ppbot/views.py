@@ -6,6 +6,7 @@ from ppbot.apis import wiki
 from env import key_maps_JS
 
 from . import app
+import os
 
 
 @app.route("/")
@@ -13,6 +14,7 @@ def index():
     """
     Through the framework flask, return the html file
     """
+    print(os.environ.get(key_maps_JS))
     return render_template("index.html", key=key_maps_JS)
 
 
