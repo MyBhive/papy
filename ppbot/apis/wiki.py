@@ -59,4 +59,8 @@ class Wiki:
                                  "Allons mon petiot tu peux le faire!".format(alternative_result)
             return alternative_answer
         except wikipedia.exceptions.WikipediaException:
-            return self.unfind
+            use_coordinate = self.geocode
+            description = wikipedia.geosearch(use_coordinate['lat'], use_coordinate['lng'])
+            alternative_result = wikipedia.summary(description)
+            alternative_answer = "{} C'est ça que tu voulais savoir??!!".format(alternative_result)
+            return alternative_answer
