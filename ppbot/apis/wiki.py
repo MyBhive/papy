@@ -10,7 +10,7 @@ class Wiki:
     """
     Class to find a wikipedia answer out of the parsed user input
     """
-    def __init__(self, text_parsed, address):
+    def __init__(self, text_parsed, address, geocode):
         """
         Initialize :
         - the french language for the wikipedia researches
@@ -20,12 +20,14 @@ class Wiki:
         wikipedia.set_lang("fr")
         self.text_parsed = text_parsed
         self.address = address
+        self.geocode = geocode
         self.unfind = ("Ohh un papillon!? "
                        "Tu sais quand j'étais petit les champs étaient remplis de papillon!? "
                        "Il était aussi joli que celui-là. "
                        "Ah oui pardon tu disais? "
-                       "Car je crois ne pas avoir de réponse à ce sujet mais regarde ce bel endroit. "
+                       "tu voulais voir : {} ou je me trompe? Je ne sais que te dire.. "
                        "Repose-moi une autre question mais soit plus précis s'il te plaît."
+                       .format(address)
                        )
 
     def get_wiki_result(self):
@@ -36,6 +38,7 @@ class Wiki:
         """
         try:
             find_result = wikipedia.search(self.text_parsed)
+            print(find_result)
             if not find_result:
                 return self.unfind
             else:
@@ -47,6 +50,13 @@ class Wiki:
                           .format(self.address, description))
                 return resume
         except exceptions.DisambiguationError:
-            return self.unfind
+            use_coordinate = self.geocode
+            description = wikipedia.geosearch(use_coordinate['lat'], use_coordinate['lng'])
+            alternative_result = wikipedia.summary(description)
+            alternative_answer = "{} Si ce n'est pas la réponse que tu attendais " \
+                                 "alors soit plus précis. Tu vois, si je te dis par exemple: 'Paris'. " \
+                                 "Ca veut dire quoi? La célébrité? la ville? le défis? " \
+                                 "Allons mon petiot tu peux le faire!".format(alternative_result)
+            return alternative_answer
         except wikipedia.exceptions.WikipediaException:
             return self.unfind

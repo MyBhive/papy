@@ -1,3 +1,4 @@
+import os
 from flask import render_template, request, jsonify
 
 from ppbot import parse
@@ -6,7 +7,6 @@ from ppbot.apis import wiki
 
 
 from . import app
-import os
 
 
 @app.route("/")
@@ -14,7 +14,6 @@ def index():
     """
     Through the framework flask, return the html file
     """
-    print(os.environ.get('key_maps_JS'))
     return render_template("index.html", key=os.environ.get('key_maps_JS'))
 
 
@@ -30,17 +29,17 @@ def get_data():
     parsing = parse.Parser("ppbot/words.json")
     data = request.data.decode("utf-8")
     parse_text = parsing.answer_parser(data)
-    print(parse_text)
+
     # get the gps coord and the address
     gmap = map.Map(parse_text)
     gps_coordinate = gmap.geocode()
-    print(gps_coordinate)
     address = gmap.get_address_from_geocode()
-    print(address)
+
     # get the wiki quote through the parse_text
-    wiki_extract = wiki.Wiki(parse_text, address)
+    wiki_extract = wiki.Wiki(parse_text, address, gps_coordinate)
     wiki_data = wiki_extract.get_wiki_result()
 
-    response = {"wiki": wiki_data, "coordinate": gps_coordinate, "address": address}
-    print(response)
+    response = {"wiki": wiki_data,
+                "coordinate": gps_coordinate,
+                "address": address}
     return jsonify(response)
