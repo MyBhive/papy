@@ -124,4 +124,18 @@ footer {
     h1, h2{
       font-size: 1.5em;
     }
+    #createby{
+      font-size: 0.9em;
+    }
+    footer{
+      padding: 0.1em;
+    }
+    #git{
+      height: 15px;
+      width: 22,5px;
+    }
+    #link{
+      height: 15px;
+      width: 50;
+    }
   } 
