@@ -22,7 +22,7 @@ class Wiki:
         self.address = address
         self.geocode = geocode
         self.unfind = ("Ohh un papillon!? "
-                       "Tu sais quand j'étais petit les champs étaient remplis de papillon!? "
+                       "Tu sais quand j'étais petit les champs étaient remplis de papillons!? "
                        "Il était aussi joli que celui-là. "
                        "Ah oui pardon tu disais? "
                        "tu voulais voir : {} ou je me trompe? Je ne sais que te dire.. "
@@ -56,7 +56,7 @@ class Wiki:
             alternative_answer = "{} Si ce n'est pas la réponse que tu attendais " \
                                  "alors soit plus précis. Tu vois, si je te dis par exemple: 'Paris'. " \
                                  "Ca veut dire quoi? La célébrité? la ville? le défi? " \
-                                 "Allons mon petiot tu peux le faire!".format(alternative_result)
+                                 "Voyons mon petiot tu peux le faire!".format(alternative_result)
             return alternative_answer
         except wikipedia.exceptions.WikipediaException:
             use_coordinate = self.geocode
