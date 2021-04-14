@@ -52,15 +52,15 @@ class Wiki:
         except exceptions.DisambiguationError:
             use_coordinate = self.geocode
             description = wikipedia.geosearch(use_coordinate['lat'], use_coordinate['lng'])
-            alternative_result = wikipedia.summary(description)
+            alternative_result = wikipedia.summary(description, sentences=2)
             alternative_answer = "{} Si ce n'est pas la réponse que tu attendais " \
                                  "alors soit plus précis. Tu vois, si je te dis par exemple: 'Paris'. " \
-                                 "Ca veut dire quoi? La célébrité? la ville? le défis? " \
+                                 "Ca veut dire quoi? La célébrité? la ville? le défi? " \
                                  "Allons mon petiot tu peux le faire!".format(alternative_result)
             return alternative_answer
         except wikipedia.exceptions.WikipediaException:
             use_coordinate = self.geocode
             description = wikipedia.geosearch(use_coordinate['lat'], use_coordinate['lng'])
-            alternative_result = wikipedia.summary(description)
+            alternative_result = wikipedia.summary(description, sentences=2)
             alternative_answer = "{} C'est ça que tu voulais savoir??!!".format(alternative_result)
             return alternative_answer

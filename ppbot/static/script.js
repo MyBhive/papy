@@ -1,5 +1,4 @@
 let form = document.getElementById("user_text_form");
-let url_map = "https://maps.googleapis.com/maps/api/js?";
 let spinner = document.getElementById("spinner");
 let user_question = document.querySelector("#user_input");
 let map_index = 0;

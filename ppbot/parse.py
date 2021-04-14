@@ -24,15 +24,19 @@ class Parser:
         with open(self.stopwords, encoding="utf-8-sig") as json_words:
             words_dict = json.load(json_words)
         recup_answer = re.sub(r'[^\w\s]', " ", str(user_input))
+        print(recup_answer)
         make_lower = recup_answer.lower()
         sentence_list = make_lower.split()
+        print(sentence_list)
         i = 0
         while i < len(sentence_list):
             if sentence_list[i] in words_dict:
                 sentence_list[i] = ""
             i += 1
         final_output = " ".join(sentence_list)
+        print(final_output)
         final_output = re.sub(" +", " ", final_output)
+        print(final_output)
         sentence = final_output.strip()
+        print(sentence)
         return sentence
-

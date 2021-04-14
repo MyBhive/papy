@@ -14,8 +14,3 @@ def test_address_result_from_def_get_address_from_geocode_mock(monkeypatch):
     gmap = Map("Jardin Botanique Tours")
     monkeypatch.setattr(urllib.request, 'urlopen', result)
     assert gmap.get_address_from_geocode() == result
-
-
-
-
-
